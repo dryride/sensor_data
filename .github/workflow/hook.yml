@@ -12,9 +12,8 @@ jobs:
     steps:
       - name: Push Sensor Data to Google Spreadsheet
         env:
-          SPREADSHEET_ID: ${{ secrets.SPREADSHEET_ID }}
-          API_KEY: ${{ secrets.GOOGLE_API_KEY }} # or any other method of authentication
+          SPREADSHEET_URL: ${{ secrets.SPREADSHEET_URL }}
         run: |
           # Replace this command with your cURL command to push data to Google Spreadsheet
           # Example:
-          curl -X POST -H "Content-Type: application/json" -d '{"sensor_data": "your_data_here"}' "https://sheets.googleapis.com/v4/spreadsheets/$SPREADSHEET_ID/values/Sheet1!A1:append?valueInputOption=RAW&key=$API_KEY"
+          curl -X POST -d '{"sensor_data": m_data}' "$SPREADSHEET_URL"
